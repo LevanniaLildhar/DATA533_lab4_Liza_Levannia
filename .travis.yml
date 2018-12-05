@@ -2,6 +2,11 @@ language: python
 python: 
 - "3.4"
 - "3.5"
+- "3.6"
+install:
+- pip install pandas
+- pip install pygal
+- pip install ipython
 script: 
 - python myfitness_tests/maxMinTestModule.py
 - python myfitness_tests/tableTestModule.py
