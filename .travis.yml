@@ -1,0 +1,9 @@
+language: python 
+python: 
+- "3.4"
+- "3.5"
+script: 
+- python myfitness_tests/maxMinTestModule.py
+- python myfitness_tests/tableTestModule.py
+- python myfitness_tests/TestChart.py
+- python myfitness_tests/TestData.py     

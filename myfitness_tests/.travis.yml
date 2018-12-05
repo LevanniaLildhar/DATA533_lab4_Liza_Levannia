@@ -1,9 +1,0 @@
-language: python 
-python: 
-- "3.4"
-- "3.5"
-script: 
-- python maxMinTestModule.py
-- python tableTestModule.py
-- python TestChart.py
-- python TestData.py     
