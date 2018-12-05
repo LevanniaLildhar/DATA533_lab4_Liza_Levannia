@@ -3,4 +3,7 @@ python:
 - "3.4"
 - "3.5"
 script: 
-- python TestModule1.py
+- python maxMinTestModule.py
+- python tableTestModule.py
+- python TestChart.py
+- python TestData.py     
