@@ -1,4 +1,4 @@
-# data533_lab3
+# data533_lab4
 
 ## Package Topic Selection
 
@@ -81,3 +81,4 @@ This package requires the following Python modules:
 - numpy
 - pandas 
 - pygal 
+- IPython
