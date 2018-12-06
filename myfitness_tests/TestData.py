@@ -9,7 +9,8 @@ class TestDataPerson(unittest.TestCase):
     def setUpClass(cls):
         print("Starting TestData")
         cls.p1 = data.Person('Liza', 30, 'F')
-        cls.healthdata_p1 = data.healthdata('Liza', 30, 'F', "Health Data.csv")
+        cls.healthdata_p1 = data.healthdata('Liza', 30, 'F', 'Health Data.csv')
+        cls.healthdata_p2 = data.healthdata('Liza', 'Y', 'F', '')
         
     def setUp(self):
         super().setUp()
@@ -36,6 +37,11 @@ class TestDataPerson(unittest.TestCase):
         #Check data import 
         self.assertIsInstance(self.healthdata_p1.data(), pd.DataFrame)
         
+        #Check that the age is an integer
+        self.assertEqual(self.healthdata_p2.age, None)
+        
+        #Check that file exists
+        self.assertFalse(self.healthdata_p2.data())
         
     def tearDown(self):
         super().tearDown()
@@ -44,4 +50,6 @@ class TestDataPerson(unittest.TestCase):
     def tearDownClass(cls):
         del(cls.p1)
         del(cls.healthdata_p1)
+        del(cls.healthdata_p2)
         print("Finished TestData")
+        

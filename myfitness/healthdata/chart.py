@@ -1,4 +1,4 @@
-def chart(columnX, columnY, xlabel, ylabel):
+def chart(columnX, columnY, xlabel, ylabel, filename = ''):
     """Create an interactive bar graph using pygal
         Parameters: columnX as list of strings, columnY as list of values, xlabel as string, ylabel as string
         
@@ -12,9 +12,17 @@ def chart(columnX, columnY, xlabel, ylabel):
     y = columnY
     x = columnX
     
+    
     # construct pygal bar chart
     bar_chart = pygal.Bar(include_x_axis=True)
-    bar_chart.add(ylabel,y)
+    
+    try: 
+        y = list(map(float, y))
+        bar_chart.add(ylabel, y)
+    except: 
+        print("Please provide a list of floats to chart")
+        return False
+        
     bar_chart.title = 'My Fitness Chart'
     bar_chart.x_labels = x
     bar_chart.x_title = xlabel
@@ -23,8 +31,10 @@ def chart(columnX, columnY, xlabel, ylabel):
     bar_chart.render_in_browser()
     
     # render bar chart to file and brower for viewing
-    bar_chart.render_to_file('my_fitness_data.svg')
+    try: 
+        bar_chart.render_to_file(filename)
+    except: 
+        print("Please provide a filename in order for your chart to be saved")
+        return False 
     
     return bar_chart
-
-    
