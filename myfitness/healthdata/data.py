@@ -7,7 +7,12 @@ class Person:
         
         # assign the name, age, and gender to the class object in initialization
         self.name = name
-        self.age = age
+        try: 
+            self.age = int(age)
+        except: 
+            print("Age is an integer")
+            self.age = None
+        
         self.gender = gender
     
     def display(self):
@@ -20,7 +25,7 @@ class Person:
         return "Name: {}, Age: {}, Gender: {}". format(self.name, self.age, self.gender)
 
 class healthdata(Person): 
-    def __init__(self, name, age, gender, file):
+    def __init__(self, name, age, gender, file =''):
         """Create a object of class healthdata() this inherits from the superclass Person()
         Parameters: name, age, gender, file
         
@@ -39,6 +44,12 @@ class healthdata(Person):
         Return: Display of healthdata object attributes name, age, gender and dataframe containing healthdata() object file"""
         
         import pandas as pd # ensure pandas is imported
-        self.data = pd.read_csv(self.file) # import the self.file into a dataframe using pandas
+        
+        try: 
+            self.data = pd.read_csv(self.file) # import the self.file into a dataframe using pandas
+        except FileNotFoundError:
+            print("File does not exist")
+            return False
+            
         Person.display(self) #display object attributes using inherited display() finction 
         return self.data
