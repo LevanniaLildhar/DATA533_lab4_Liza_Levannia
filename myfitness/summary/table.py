@@ -20,6 +20,12 @@ def summary_data(data):
     data.columns = ['date', 'distance', 'steps']
 
     # group data by month and calculate average number of steps per month
-    table = data.groupby(pd.Grouper(key='date',freq='M')).agg({'steps':'mean'})
-    table.sort_values(['date'], ascending = True)
-    return table
+    try:
+        table = data.groupby(pd.Grouper(key='date',freq='M')).agg({'steps':'mean'})
+        table.sort_values(['date'], ascending = True)
+        return table
+    except:
+        data.steps = data.steps.astype(int)
+        table = data.groupby(pd.Grouper(key='date',freq='M')).agg({'steps':'mean'})
+        table.sort_values(['date'], ascending = True)
+        return table
