@@ -49,6 +49,6 @@ def getMin(data):
         minimum = data.loc[data['Steps (count)'].idxmin()]
         return minimum
     except:
-        data.loc[data['Steps (count)']] = data.loc[data['Steps (count)']].astype(int)
+        data['Steps (count)'] = data['Steps (count)'].astype(int)
         minimum = data.loc[data['Steps (count)'].idxmin()]
         return minimum
