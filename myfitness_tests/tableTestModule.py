@@ -1,20 +1,20 @@
 import unittest
 import pandas as pd
 from myfitness.summary import table
-
+ 
 class Testtable(unittest.TestCase):
-
-    @classmethod
+    
+    @classmethod                            
     def setUpClass(cls):
         print("Starting Testtable")
+    
+    def setUp(self):
+        super().setUp()
         testdata2 = {'Start': ['2017-02-12 0:00','2017-03-07 0:00' , '2017-02-14 0:00', '2017-03-05 0:00', '2017-03-06 0:00', '2017-04-20 0:00', '2017-04-21 0:00', '2017-02-13 0:00','2017-04-22 0:00', '2017-04-23 0:00'],
             'Finish': ['2017-02-13 0:00','2017-03-08 0:00', '2017-02-15 0:00', '2017-03-06 0:00', '2017-03-07 0:00', '2017-04-21 0:00', '2017-04-22 0:00', '2017-02-14 0:00', '2017-04-23 0:00', '2017-04-24 0:00'],
             'Distance (mi)': [0.559,2.225,1.422,1.0797,2.614,3.295,2.276,2.591,3.995,2.611],
             'Steps (count)': [1180, 4673, 3055, 2365, 5270, 6820, 4751, 5353, 9647, 6806]}
-        cls.testdf2 = pd.DataFrame(testdata2)
-
-    def setUp(self):
-        super().setUp()
+        self.testdf2 = pd.DataFrame(testdata2)
         print(self.__class__())
 
     def test_table(self):
@@ -33,11 +33,18 @@ class Testtable(unittest.TestCase):
         self.assertEqual(testtable.steps.values[0], febsteps)
         self.assertEqual(testtable.steps.values[1], marsteps)
         self.assertEqual(testtable.steps.values[2], aprsteps)
-
+        # Verify Except statement by changing one of the values for Steps to a string:
+        self.testdf2.loc[4, 'Steps (count)'] = '5270'
+        testtable = table.summary_data(self.testdf2)
+        self.assertEqual(testtable.steps.values[2], aprsteps)
+        
     def tearDown(self):
-        super().tearDown()
-
+        del self.testdf2
+        super().tearDown()        
+    
     @classmethod
     def tearDownClass(cls):
-        del cls.testdf2
-        print("Testtable completed")
+        print("Testtable completed")   
+
+# For Jupyter notebook and Coverage on the module only:
+# unittest.main(argv=[''], verbosity=2, exit=False)
