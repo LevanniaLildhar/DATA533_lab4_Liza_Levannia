@@ -13,12 +13,21 @@ def getMax(data):
             The row of values for when the maximum number of steps were achieved:
             Start date, Finish date, Distance(mi), Steps (count)"""
 
+    # ensure pandas has been imported
 
-    import pandas as pd             # ensure pandas has been imported
+    import pandas as pd
 
-    # find the row containing the maximum steps and return that row.
-    maximum = data.loc[data['Steps (count)'].idxmax()]
-    return maximum
+    # Verify datatype in Steps is correct datatype, then find the
+    # row containing the maximum steps and return that row.
+
+    try:
+        maximum = data.loc[data['Steps (count)'].idxmax()]
+        return maximum
+    except:
+        data['Steps (count)'] = data['Steps (count)'].astype(int)
+        maximum = data.loc[data['Steps (count)'].idxmax()]
+        return maximum
+
 
 def getMin(data):
     """ Find the maximum number of steps in the data and the date it was achieved.
@@ -29,8 +38,17 @@ def getMin(data):
             The row of values for when the maximum number of steps were achieved:
             Start date, Finish date, Distance(mi), Steps (count)"""
 
-    import pandas as pd             #ensure pandas has been imported
+    #ensure pandas has been imported
 
-    # find the row containing the minimum steps and return that row.
-    minimum = data.loc[data['Steps (count)'].idxmin()]
-    return minimum
+    import pandas as pd
+
+    # Verify datatype in Steps is correct datatype, then find the
+    # row containing the minimum steps and return that row.
+
+    try:
+        minimum = data.loc[data['Steps (count)'].idxmin()]
+        return minimum
+    except:
+        data['Steps (count)'] = data['Steps (count)'].astype(int)
+        minimum = data.loc[data['Steps (count)'].idxmin()]
+        return minimum

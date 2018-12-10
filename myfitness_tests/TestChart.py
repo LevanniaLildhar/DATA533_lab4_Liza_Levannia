@@ -11,9 +11,9 @@ class TestChart (unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("Starting TestChart")
-        columnX = ['A','B','C','D','E']
-        columnY = [1,2,3,4,5]
-        cls.testchart = chart.chart(columnX, columnY, 'letters', 'numbers')
+        cls.columnX = ['A','B','C','D','E']
+        cls.columnY = [1,2,3,4,5]
+        cls.testchart = chart.chart(cls.columnX, cls.columnY, 'letters', 'numbers', 'my_fitness_chart')
 
     def setUp(self):
         super().setUp()
@@ -22,21 +22,27 @@ class TestChart (unittest.TestCase):
     def test_chart(self): 
         #do chart tests here 
         
-        #Check pygal chart
+        # Checking try and except in chart
+        self.assertFalse(chart.chart(self.columnX, self.columnX, 'letters', 'numbers'))
+        
+        # Check pygal chart
         self.assertIsInstance(self.testchart, pygal.Bar)
         
-        #Check title
+        # Check title
         self.assertEqual(self.testchart.title, 'My Fitness Chart')
         
-        #Check x_title
+        # Check x_title
         self.assertEqual(self.testchart.x_title, 'letters')
         
-        #Check y_title
+        # Check y_title
         self.assertEqual(self.testchart.y_title, 'numbers')
         
-        #Check x_labels
+        # Check x_labels
         self.assertEqual(self.testchart.x_labels, ['A','B','C','D','E'])
-
+        
+        # Checking try and except in filename
+        self.assertFalse(chart.chart(self.columnX, self.columnY, 'letters', 'numbers'))
+        
     def tearDown(self):
         super().tearDown()
             

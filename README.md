@@ -82,3 +82,5 @@ This package requires the following Python modules:
 - pandas 
 - pygal 
 - IPython
+
+Build_Stamp [![Build Status](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia.svg?branch=master)](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia)
