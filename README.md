@@ -1,8 +1,15 @@
+
 # data533_lab4
 
-## Package Topic Selection
+---
 
-This repository contains the lab 2 submission for Liza Wood and Levannia Lildhar. 
+Build_Stamp [![Build Status](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia.svg?branch=master)](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia)
+
+---
+
+## Package Topic Selection 
+
+This repository contains the lab 4 submission for Liza Wood and Levannia Lildhar. 
 
 The package written is titled `myfitness`
     - This package provides some basic tools to analyze the health data in a csv file downloaded from Apple Health. These tools could be used to analyze and compare the data from multiple people.
@@ -46,13 +53,13 @@ Detailed descriptions of the `data` module in the `healthdata` subpackage is sho
 | -------------  |:------------------------------------------------------------------:   | :----------------:|:-----------------------:|
 | `__init__`     | Create an object of class Person() to be used in further analysis. This is the superclass | name, age, gender |An object of class Person|
 | `display`      | Displays the name, age and gender of a Person() object                | Person() object   | Attributes name, age, and gender| 
-| `healthdata`   | Create a object of class healthdata() this inherits from the superclass Person()| name, age, gender, csv file downloaded from Apple Health | Display of healthdata object attributes name, age, gender and dataframe containing healthdata() object file|
+| `healthdata`   | Create a object of class healthdata() this inherits from the superclass Person()| name, age, gender, file (downloaded from Apple Health, as csv) | Display of healthdata object attributes name, age, gender and dataframe containing healthdata() object file|
 
 Detailed descriptions of the  `chart` module in the `healthdata` subpackage is shown below:  
 
 | Module        | Description                                                            | Parameters        | Return                  |
 | -------------  |:------------------------------------------------------------------:   | :----------------:|:-----------------------:|
-| `chart`     | Creates an interactive bar graph using pygal | columnX as list of strings, columnY as list of values, xlabel as string, ylabel as string |.svg file with xlabel, ylabel and title|
+| `chart`     | Creates an interactive bar graph using pygal | columnX as list of strings, columnY as list of values, xlabel as string, ylabel as string, filename |.svg file with xlabel, ylabel, title, and filename|
 
 `summary`
 This subpackage is meant to provide users with some basic statistical analysis tools to view their data. This subpackage works specifically with Apple Health data.
@@ -74,6 +81,8 @@ Detailed descriptions  of the `maxMin` module in the `summary` subpackage is sho
 
 `myfitness_tests` contains the necessary test suite and classes to verify that the package is working correctly. There are a total of four classes that conduct unit testing as well as the suite. 
 
+Test Suite Coverge Report ![Coverage Report](https://github.com/LevanniaLildhar/DATA533_lab4_Liza_Levannia/blob/master/TestSuiteCoverageScreenShoot.png)
+
 ## Requirements 
 
 This package requires the following Python modules:
@@ -83,4 +92,4 @@ This package requires the following Python modules:
 - pygal 
 - IPython
 
-Build_Stamp [![Build Status](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia.svg?branch=master)](https://travis-ci.org/LevanniaLildhar/DATA533_lab4_Liza_Levannia)
+
